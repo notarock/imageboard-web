@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
-import { CatalogPage } from "./Components/Pages/Catalog";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Routes } from "./Routes";
 import "./App.css";
 
 function App() {
@@ -21,11 +20,7 @@ function App() {
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/catalog">
-            <CatalogPage message={"This is my message"} />
-          </Route>
-        </Switch>
+        {Routes}
       </div>
     </Router>
   );
