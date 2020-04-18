@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import { Routes } from "./Routes";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { CatalogPage } from "./Components/Pages/Catalog";
 
 function App() {
   return (
@@ -17,7 +16,12 @@ function App() {
             </li>
           </ul>
         </nav>
-        {Routes}
+        <Switch>
+          <Route path="/catalog">
+            <h2>Catalog page</h2>
+            <CatalogPage message={"This is my message"} />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

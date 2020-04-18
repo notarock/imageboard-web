@@ -1,4 +1,6 @@
 import React from "react";
+// import styled from "styled-components";
+// import tw from "tailwind.macro";
 
 interface Props {
   message: string;
@@ -36,3 +38,5 @@ export const CatalogPage = (props: Props) => {
     </>
   );
 };
+
+// const PostBlock = tw.div`bg-black`;
