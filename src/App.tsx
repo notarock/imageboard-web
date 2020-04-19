@@ -3,20 +3,21 @@ import styled from "styled-components";
 import tw from "tailwind.macro";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { CatalogPage } from "./Components/Pages/Catalog";
+import boardList from "./ressources/boardList.json";
 
 function App() {
+  //TODO: Connect boardList to backend
+  const boardsLink = boardList.map(board => (
+    <NavLi>
+      <Link to={`/boards/${board.name}/catalog`}>{board.name}</Link>
+    </NavLi>
+  ));
+
   return (
     <Background>
       <Router>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/boards/Random/catalog">Catalog</Link>
-            </li>
-          </ul>
+          <NavUl>{boardsLink}</NavUl>
         </nav>
         <Switch>
           <Route
@@ -31,6 +32,14 @@ function App() {
     </Background>
   );
 }
+
+const NavUl = styled.ul`
+  ${tw`flex text-center`}
+`;
+
+const NavLi = styled.li`
+  ${tw`p-2 m-2`}
+`;
 
 const Background = styled.div`
   ${tw`bg-green-100 min-h-screen max-w-screen`}
