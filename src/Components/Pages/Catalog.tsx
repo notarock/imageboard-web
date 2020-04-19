@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import tw from "tailwind.macro";
-import { range } from "lodash";
-import tempPost from "../../ressources/tempPost.json"; //TODO: Query data from backend
+import React from 'react';
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
+import { range } from 'lodash';
+import tempPost from '../../ressources/tempPost.json'; //TODO: Query data from backend
 
 interface CatalogProps {
   board: string;
@@ -21,7 +21,7 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
   range(50).forEach((id: number) => {
     posts.push({
       ...tempPost,
-      id
+      id,
     });
   });
 
@@ -31,7 +31,7 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
         <h1>{props.board}</h1>
       </BoardTitle>
       <CatalogContainer>
-        {posts.map(post => (
+        {posts.map((post) => (
           <PostBlock>
             <h4>{post?.name}</h4>
           </PostBlock>
