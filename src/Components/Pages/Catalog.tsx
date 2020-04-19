@@ -1,6 +1,7 @@
 import React from "react";
-// import styled from "styled-components";
-// import tw from "tailwind.macro";
+import styled from "styled-components";
+import tw from "tailwind.macro";
+import { range } from "lodash";
 
 interface Props {
   message: string;
@@ -18,12 +19,12 @@ export const CatalogPage = (props: Props) => {
     id: 0,
     name: "Shill my new client",
     content: "its too good",
-    uri: "https://source.unsplash.com/random"
+    uri: "https://source.unsplash.com/rcolors-andom"
   };
 
   const posts: [Post?] = [];
 
-  [1, 2, 3, 4, 5, 6, 6, 7, 8, 9].forEach(id => {
+  range(50).forEach((id: number) => {
     posts.push({
       ...examplePost,
       id
@@ -31,12 +32,20 @@ export const CatalogPage = (props: Props) => {
   });
 
   return (
-    <>
+    <CatalogContainer>
       {posts.map(post => (
-        <p>{post?.name}</p>
+        <PostBlock>
+          <h4>{post?.name}</h4>
+        </PostBlock>
       ))}
-    </>
+    </CatalogContainer>
   );
 };
 
-// const PostBlock = tw.div`bg-black`;
+const CatalogContainer = styled.div`
+  ${tw`block`}
+`;
+
+const PostBlock = styled.div`
+  ${tw`border-solid border-2 border-black bg-green-200 m-4 p-2`}
+`;
