@@ -7,7 +7,7 @@ import boardList from "./ressources/boardList.json";
 
 function App() {
   //TODO: Connect boardList to backend
-  const boardsLink = boardList.map(board => (
+  const boardsLink = boardList.map((board) => (
     <NavLi>
       <Link to={`/boards/${board.name}/catalog`}>{board.name}</Link>
     </NavLi>
@@ -23,7 +23,7 @@ function App() {
           <Route
             exact
             path="/boards/:board/catalog"
-            render={props => (
+            render={(props) => (
               <CatalogPage board={props.match.params.board || ""} />
             )}
           />
