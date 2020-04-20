@@ -21,11 +21,16 @@ export const CatalogThumbnail: React.FC<CatalogThumbnailProps> = (
 
   return (
     <PostBlock>
+      <Thumbnail src={post.uri} />
       <Title>{post?.name}</Title>
       <p>{post?.content}</p>
     </PostBlock>
   );
 };
+
+const Thumbnail = styled.img`
+  ${tw`min-w-full`}
+`;
 
 const PostBlock = styled.span`
   ${tw`inline border-solid border border-black bg-green-200 m-4 p-2`}
