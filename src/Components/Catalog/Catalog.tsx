@@ -17,7 +17,7 @@ export interface Post {
 }
 
 export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
-  const posts: [Post?] = [];
+  const posts: [Post] = [tempPost];
 
   range(50).forEach((id: number) => {
     posts.push({
@@ -41,12 +41,12 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
 };
 
 const BoardTitle = styled.div`
-  ${tw`text-center text-6xl`}
+  ${tw`text-center text-6xl py-16`}
 `;
 
 const CatalogContainer = styled.div`
   grid-row-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: min-content;
   display: grid;
   justify-items: center;
