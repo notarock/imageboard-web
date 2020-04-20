@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { range } from 'lodash';
-import tempPost from '../../ressources/tempPost.json'; //TODO: Query data from backend
+import tempPost from '../../ressources/tempPost.json';
+import { CatalogThumbnail } from './CatalogThumbnail';
 
 interface CatalogProps {
   board: string;
 }
 
-interface Post {
+export interface Post {
   id: number;
   name: string;
   content: string;
@@ -32,9 +33,7 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
       </BoardTitle>
       <CatalogContainer>
         {posts.map((post) => (
-          <PostBlock>
-            <h4>{post?.name}</h4>
-          </PostBlock>
+          <CatalogThumbnail post={post} />
         ))}
       </CatalogContainer>
     </>
@@ -51,8 +50,4 @@ const CatalogContainer = styled.div`
   grid-auto-rows: min-content;
   display: grid;
   justify-items: center;
-`;
-
-const PostBlock = styled.div`
-  ${tw`flex border-solid border border-black bg-green-200 m-4 p-2`}
 `;

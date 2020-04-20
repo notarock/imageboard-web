@@ -1,8 +1,10 @@
+const path = require('path');
+
 module.exports = {
   entry: [],
   output: {
-    path: __dirname + "/dist",
-    filename: "app.bundle.js"
+    path: __dirname + '/dist',
+    filename: 'app.bundle.js',
   },
   module: {
     rules: [
@@ -10,10 +12,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
-  plugins: [require("tailwindcss"), require("autoprefixer")]
+  plugins: [require('tailwindcss'), require('autoprefixer')],
 };

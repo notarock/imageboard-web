@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { CatalogPage } from './Components/Pages/Catalog';
+import { CatalogPage } from './Components/Catalog';
 import boardList from './ressources/boardList.json';
 
 function App() {
