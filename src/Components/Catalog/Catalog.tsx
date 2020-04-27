@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
-import { range } from 'lodash';
-import tempPost from '../../ressources/tempPost.json';
-import { CatalogThumbnail } from './CatalogThumbnail';
+// import { range } from 'lodash';
+// import tempPost from '../../ressources/tempPost.json';
+// import { CatalogThumbnail } from './CatalogThumbnail';
+import { useAxios } from '../../services/apiClient';
 
 interface CatalogProps {
   board: string;
@@ -17,14 +18,28 @@ export interface Post {
 }
 
 export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
-  const posts: [Post] = [tempPost];
-
-  range(50).forEach((id: number) => {
-    posts.push({
-      ...tempPost,
-      id,
-    });
+  const [{ data, loading, error }, refetch] = useAxios({
+    url: '/post',
   });
+
+  if (loading) return <p>Loading...</p>;
+
+  if (error) {
+    console.log('error', error);
+    return <p>Error!</p>;
+  }
+
+  console.log('data', data);
+
+  //const tempPost = { id: 0, name: 'aa', content: 'aa', uri: 'aa' };
+  //
+  //range(50).forEach((id: number) => {
+  //posts.push({
+  //...tempPost,
+  //id,
+  //});
+  //});
+  //
 
   return (
     <>
@@ -32,9 +47,9 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
         <h1>{props.board}</h1>
       </BoardTitle>
       <CatalogContainer>
-        {posts.map((post) => (
+        {/*posts.map((post) => (
           <CatalogThumbnail post={post} />
-        ))}
+        ))*/}
       </CatalogContainer>
     </>
   );
