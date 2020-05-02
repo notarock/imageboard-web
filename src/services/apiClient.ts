@@ -1,16 +1,10 @@
 import { configure, makeUseAxios } from 'axios-hooks';
 import Axios from 'axios';
 
-const axios = Axios.create({
-  baseURL: 'http://localhost:5000',
-  timeout: 1000,
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    'Access-Control-Allow-Origin': '*',
-  },
+export const axios = Axios.create({
+  baseURL: 'http://127.0.0.1:5000/',
+  timeout: 8000,
 });
-
-console.log('ax', axios);
 
 export const useAxios = makeUseAxios({
   axios,

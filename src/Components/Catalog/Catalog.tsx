@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 // import { range } from 'lodash';
 // import tempPost from '../../ressources/tempPost.json';
 // import { CatalogThumbnail } from './CatalogThumbnail';
-import { useAxios } from '../../services/apiClient';
+import { axios, useAxios } from '../../services/apiClient';
 
 interface CatalogProps {
   board: string;
@@ -19,12 +19,16 @@ export interface Post {
 
 export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
   const [{ data, loading, error }, refetch] = useAxios({
-    url: '/post',
+    url: '/',
   });
+
+  axios.get('/').then((response) => console.log(response));
 
   if (loading) return <p>Loading...</p>;
 
   if (error) {
+    console.log('data', data);
+    console.log('refetch', refetch);
     console.log('error', error);
     return <p>Error!</p>;
   }
