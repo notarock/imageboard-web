@@ -6,6 +6,7 @@ import { useAxios } from '../../services/apiClient';
 
 interface CatalogProps {
   board: string;
+  boardList: Board[];
 }
 
 export interface Post {
@@ -15,10 +16,21 @@ export interface Post {
   uri: string;
 }
 
+interface Board {
+  id: string;
+  name: string;
+  abbreviation: string;
+}
+
 export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
-  const [{ data, loading, error }, refetch] = useAxios({
-    url: '/post',
+  const board = props.boardList.find((b: Board) => b.abbreviation === props.board);
+  const [{ data, loading, error }] = useAxios({
+    url: `/boards/${props.board}/posts`,
   });
+
+  if (!board) {
+    return (<><h2>Not found!</h2></>);
+  }
 
   if (loading) return <p>Loading stuff...</p>;
 
@@ -31,11 +43,11 @@ export const CatalogPage: React.FC<CatalogProps> = (props: CatalogProps) => {
   return (
     <>
       <BoardTitle>
-        <h1>{props.board}</h1>
+        <h1>{board.name}</h1>
       </BoardTitle>
       <CatalogContainer>
         {posts.map((post: Post) => (
-          <CatalogThumbnail post={post} />
+          <CatalogThumbnail key={post.id} post={post} />
         ))}
       </CatalogContainer>
     </>

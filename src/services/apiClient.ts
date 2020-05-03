@@ -1,4 +1,4 @@
-import { configure, makeUseAxios } from 'axios-hooks';
+import { makeUseAxios } from 'axios-hooks';
 import Axios from 'axios';
 
 export const axios = Axios.create({
